@@ -44,16 +44,26 @@ function ProductPage() {
 
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
           <div>
-            <div className="aspect-square rounded-3xl bg-gradient-to-br from-ink via-ink to-ink/80 flex items-center justify-center relative overflow-hidden">
-              <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_30%,var(--color-lime),transparent_55%)]" />
-              <div className="relative text-center">
-                <div className="font-display text-6xl sm:text-8xl font-bold text-lime">
-                  {product.mg ?? "—"}
-                  {product.mg && <span className="text-2xl">mg</span>}
-                </div>
-                <div className="nav-label text-white/70 mt-4">{product.name}</div>
-              </div>
-              <span className="absolute top-5 left-5 bg-lime text-lime-foreground nav-label text-xs px-3 py-1.5 rounded-full">
+            <div className="aspect-square rounded-3xl relative overflow-hidden flex items-center justify-center bg-gradient-to-br from-ink via-ink to-ink/80">
+              {product.image ? (
+                <img
+                  src={product.image}
+                  alt={`${product.name} ${product.mg ?? ""}${product.unit ?? "mg"} vial`}
+                  className="h-full w-full object-contain p-6 bg-white"
+                />
+              ) : (
+                <>
+                  <div className="absolute inset-0 opacity-30 bg-[radial-gradient(circle_at_30%_30%,var(--color-lime),transparent_55%)]" />
+                  <div className="relative text-center">
+                    <div className="font-display text-6xl sm:text-8xl font-bold text-lime">
+                      {product.mg ?? "—"}
+                      {product.mg && <span className="text-2xl">{product.unit ?? "mg"}</span>}
+                    </div>
+                    <div className="nav-label text-white/70 mt-4">{product.name}</div>
+                  </div>
+                </>
+              )}
+              <span className="absolute top-5 left-5 bg-lime text-lime-foreground nav-label text-xs px-3 py-1.5 rounded-full z-10">
                 {product.purity}% HPLC
               </span>
             </div>
