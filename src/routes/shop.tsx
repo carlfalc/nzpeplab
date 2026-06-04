@@ -66,7 +66,7 @@ function Shop() {
               <h4 className="nav-label mb-3">Sort by</h4>
               <select
                 value={sort}
-                onChange={(e) => navigate({ search: (s) => ({ ...s, sort: e.target.value as Search["sort"] }) })}
+                onChange={(e) => navigate({ search: (s: Search) => ({ ...s, sort: e.target.value as Search["sort"] }) })}
                 className="w-full p-2 border border-border rounded-lg bg-background text-sm"
               >
                 <option value="popular">Popularity</option>
