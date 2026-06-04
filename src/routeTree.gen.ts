@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as Top10RouteImport } from './routes/top-10'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as OrderConfirmedRouteImport } from './routes/order-confirmed'
 import { Route as FaqRouteImport } from './routes/faq'
@@ -24,6 +25,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductSlugRouteImport } from './routes/product.$slug'
 import { Route as PoliciesSlugRouteImport } from './routes/policies.$slug'
 
+const Top10Route = Top10RouteImport.update({
+  id: '/top-10',
+  path: '/top-10',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/faq': typeof FaqRoute
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
+  '/top-10': typeof Top10Route
   '/policies/$slug': typeof PoliciesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -124,6 +131,7 @@ export interface FileRoutesByTo {
   '/faq': typeof FaqRoute
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
+  '/top-10': typeof Top10Route
   '/policies/$slug': typeof PoliciesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -141,6 +149,7 @@ export interface FileRoutesById {
   '/faq': typeof FaqRoute
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
+  '/top-10': typeof Top10Route
   '/policies/$slug': typeof PoliciesSlugRoute
   '/product/$slug': typeof ProductSlugRoute
 }
@@ -159,6 +168,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/order-confirmed'
     | '/shop'
+    | '/top-10'
     | '/policies/$slug'
     | '/product/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -175,6 +185,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/order-confirmed'
     | '/shop'
+    | '/top-10'
     | '/policies/$slug'
     | '/product/$slug'
   id:
@@ -191,6 +202,7 @@ export interface FileRouteTypes {
     | '/faq'
     | '/order-confirmed'
     | '/shop'
+    | '/top-10'
     | '/policies/$slug'
     | '/product/$slug'
   fileRoutesById: FileRoutesById
@@ -208,12 +220,20 @@ export interface RootRouteChildren {
   FaqRoute: typeof FaqRoute
   OrderConfirmedRoute: typeof OrderConfirmedRoute
   ShopRoute: typeof ShopRoute
+  Top10Route: typeof Top10Route
   PoliciesSlugRoute: typeof PoliciesSlugRoute
   ProductSlugRoute: typeof ProductSlugRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/top-10': {
+      id: '/top-10'
+      path: '/top-10'
+      fullPath: '/top-10'
+      preLoaderRoute: typeof Top10RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -328,6 +348,7 @@ const rootRouteChildren: RootRouteChildren = {
   FaqRoute: FaqRoute,
   OrderConfirmedRoute: OrderConfirmedRoute,
   ShopRoute: ShopRoute,
+  Top10Route: Top10Route,
   PoliciesSlugRoute: PoliciesSlugRoute,
   ProductSlugRoute: ProductSlugRoute,
 }

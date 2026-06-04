@@ -5,6 +5,7 @@ import { useCart } from "@/lib/cart";
 import { CATEGORIES } from "@/lib/products";
 
 const NAV = [
+  { to: "/top-10", label: "Top 10" },
   { to: "/shop", label: "Shop" },
   { to: "/categories", label: "Categories" },
   { to: "/bundles", label: "Stacks" },

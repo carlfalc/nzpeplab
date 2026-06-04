@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useCart, fmt } from "@/lib/cart";
 import { FREE_SHIP_THRESHOLD } from "@/lib/products";
+import { recordSale } from "@/lib/sales";
 import { useState } from "react";
 import { CreditCard, Building2, Check } from "lucide-react";
 
@@ -12,7 +13,7 @@ export const Route = createFileRoute("/checkout")({
 type Pay = "card" | "wise";
 
 function Checkout() {
-  const { detailed, subtotal, clear } = useCart();
+  const { detailed, items, subtotal, clear } = useCart();
   const navigate = useNavigate();
   const [pay, setPay] = useState<Pay>("card");
   const [agree, setAgree] = useState(false);
@@ -35,6 +36,7 @@ function Checkout() {
     if (!agree) return;
     setSubmitting(true);
     setTimeout(() => {
+      recordSale(items);
       clear();
       navigate({ to: "/order-confirmed", search: { ref: orderRef, method: pay } });
     }, 800);
