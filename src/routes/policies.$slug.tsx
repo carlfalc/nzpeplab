@@ -56,6 +56,26 @@ function PolicyPage() {
       <div className="mt-8 space-y-4 text-muted-foreground leading-relaxed">
         {data.body.map((p, i) => <p key={i}>{p}</p>)}
       </div>
+
+      <div className="mt-12 flex justify-end">
+        <div className="max-w-sm md:text-right rounded-2xl border border-border bg-muted/40 p-5 text-xs text-muted-foreground space-y-2">
+          <h2 className="nav-label text-ink">Company information</h2>
+          <p>
+            This website is owned and operated exclusively by Global Bio Research Limited, a Hong
+            Kong registered company (Registration Number: 80091900).
+          </p>
+          <p>
+            Ownership and operational control have changed, and any individuals previously
+            associated with this website are no longer involved in its management or operations.
+          </p>
+          <p>
+            All enquiries:{" "}
+            <a href="https://globalbioresearch.co" target="_blank" rel="noopener noreferrer" className="text-lime hover:underline">
+              globalbioresearch.co
+            </a>
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

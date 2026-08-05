@@ -40,11 +40,23 @@ export function Footer() {
       </div>
 
       <div className="border-t border-white/10">
-        <div className="container-px max-w-7xl mx-auto py-6 text-xs text-ink-foreground/60 flex flex-col md:flex-row gap-3 justify-between">
+        <div className="container-px max-w-7xl mx-auto py-6 text-xs text-ink-foreground/60 flex flex-col md:flex-row gap-4 justify-between">
           <p>© {new Date().getFullYear()} NZ Peptide Lab. All rights reserved.</p>
-          <p className="text-lime/90 font-medium uppercase tracking-wider">
-            For research purposes only — not for human consumption.
-          </p>
+          <div className="md:text-right space-y-1">
+            <p className="text-lime/90 font-medium uppercase tracking-wider">
+              For research purposes only — not for human consumption.
+            </p>
+            <p>
+              Owned and operated exclusively by Global Bio Research Limited, a Hong Kong
+              registered company (Registration Number: 80091900).
+            </p>
+            <p>
+              All enquiries:{" "}
+              <a href="https://globalbioresearch.co" target="_blank" rel="noopener noreferrer" className="text-lime hover:underline">
+                globalbioresearch.co
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>
